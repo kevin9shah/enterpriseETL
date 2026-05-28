@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: de_postgres_db
+    environment:
+      POSTGRES_DB: enterprise_data
+      POSTGRES_USER: kevinshah
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kevinshah -d enterprise_data"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  etl_pipeline:
+    build: .
+    container_name: de_etl_pipeline
+    environment:
+      - DB_HOST=db  # Points to the 'db' service above inside the docker network
+      - DB_NAME=enterprise_data
+      - DB_USER=kevinshah
+      - DB_PASSWORD=123
+      - DB_PORT=5432
+      - EXCHANGE_RATE_API_KEY=fb2e5a8bc971a7e06d7192f2
+    depends_on:
+      db:
+        # Wait for PostgreSQL to be fully ready before starting the pipeline run
+        condition: service_healthy
+    volumes:
+      - .:/app  # Mounts your files into the container so outputs (logs, parquet) sync locally
+
+volumes:
+  pgdata:

@@ -1,0 +1,8 @@
+/Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/flask_limiter/extension.py:337 UserWarning: Using the in-memory storage for tracking rate limits as no storage was explicitly specified. This is not recommended for production use. See: https://flask-limiter.readthedocs.io#configuring-a-storage-backend for documentation about configuring the storage backend.
+[2026-05-28 21:23:27 +0530] [26898] [INFO] Starting gunicorn 22.0.0
+[2026-05-28 21:23:27 +0530] [26898] [INFO] Listening at: http://0.0.0.0:8080 (26898)
+[2026-05-28 21:23:27 +0530] [26898] [INFO] Using worker: sync
+[2026-05-28 21:23:27 +0530] [26907] [INFO] Booting worker with pid: 26907
+[2026-05-28 21:23:27 +0530] [26908] [INFO] Booting worker with pid: 26908
+[2026-05-28 21:23:27 +0530] [26909] [INFO] Booting worker with pid: 26909
+[2026-05-28 21:23:27 +0530] [26910] [INFO] Booting worker with pid: 26910

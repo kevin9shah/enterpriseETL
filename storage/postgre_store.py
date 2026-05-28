@@ -2,37 +2,126 @@ import psycopg2
 from sqlalchemy import create_engine, text
 from dotenv import load_dotenv
 import os
-load_dotenv()
+import logging
+from config.settings import settings
+
 engine = create_engine(
-    f"postgresql+psycopg2://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
+    f"postgresql+psycopg2://{settings.db_user}:{settings.db_pass}@{settings.db_host}:{settings.db_port}/{settings.db_name}"
 )
+
+logger = logging.getLogger(__name__)
+
 def get_connection():
     try:
         return psycopg2.connect(
-            database=os.getenv("DB_NAME"),
-            user = os.getenv("DB_USER"),
-            password= os.getenv("DB_PASSWORD"),
-            host = os.getenv("DB_HOST"),
-            port = os.getenv("DB_PORT"),
+            database=settings.db_name,
+            user = settings.db_user,
+            password= settings.db_pass,
+            host = settings.db_host,
+            port = settings.db_port,
         )
-    except:
+    except Exception as e:
+        logger.error(f"Connection error: {e}")
         return False
+
 def connect():
     conn = get_connection()
     if conn:
-        print("Connected to database successfully")
+        logger.info("Connected to database successfully")
+        conn.close()
     else:
-        print("Failed to connect to database")
+        logger.error("Failed to connect to database")
 
-def put_in_postgre(df,table_name):
-    df.to_sql(table_name,
-    engine,
-        if_exists = "replace",
-        index = False
-    )
-    with engine.connect() as conn:
-        result = conn.execute(text(f"SELECT * FROM {table_name} LIMIT 5;"))
-        for row in result:
-            print(row)
-    print("Data sucessfully ingested in postgre")
-   
+def put_in_postgre(df, table_name):
+    # 1. Write the DataFrame to a temporary staging table
+    staging_table = f"temp_stage_{table_name}"
+    df.to_sql(staging_table, engine, if_exists="replace", index=False)
+    
+    # 2. Use simple if/else blocks to execute explicit SQL queries for each table
+    query = ""
+    
+    if table_name == "olist_customers":
+        query = f"""
+        -- Step A: Create target table if it does not exist
+        CREATE TABLE IF NOT EXISTS olist_customers (
+            customer_id VARCHAR PRIMARY KEY,
+            customer_unique_id VARCHAR,
+            customer_zip_code_prefix INT,
+            customer_city VARCHAR,
+            customer_state VARCHAR
+        );
+        
+        -- Step B: Insert data from staging, updating existing rows on conflict
+        INSERT INTO olist_customers (customer_id, customer_unique_id, customer_zip_code_prefix, customer_city, customer_state)
+        SELECT customer_id, customer_unique_id, customer_zip_code_prefix, customer_city, customer_state 
+        FROM {staging_table}
+        ON CONFLICT (customer_id) 
+        DO UPDATE SET 
+            customer_unique_id = EXCLUDED.customer_unique_id,
+            customer_zip_code_prefix = EXCLUDED.customer_zip_code_prefix,
+            customer_city = EXCLUDED.customer_city,
+            customer_state = EXCLUDED.customer_state;
+        """
+        
+    elif table_name == "olist_orders":
+        query = f"""
+        -- Step A: Create target table if it does not exist
+        CREATE TABLE IF NOT EXISTS olist_orders (
+            order_id VARCHAR PRIMARY KEY,
+            customer_id VARCHAR,
+            order_status VARCHAR,
+            order_purchase_timestamp TIMESTAMP,
+            order_approved_at TIMESTAMP,
+            order_delivered_carrier_date TIMESTAMP,
+            order_delivered_customer_date TIMESTAMP,
+            order_estimated_delivery_date TIMESTAMP,
+            order_date DATE
+        );
+        
+        -- Step B: Insert data from staging, updating existing rows on conflict
+        INSERT INTO olist_orders (order_id, customer_id, order_status, order_purchase_timestamp, order_approved_at, order_delivered_carrier_date, order_delivered_customer_date, order_estimated_delivery_date, order_date)
+        SELECT order_id, customer_id, order_status, order_purchase_timestamp, order_approved_at, order_delivered_carrier_date, order_delivered_customer_date, order_estimated_delivery_date, order_date
+        FROM {staging_table}
+        ON CONFLICT (order_id)
+        DO UPDATE SET
+            customer_id = EXCLUDED.customer_id,
+            order_status = EXCLUDED.order_status,
+            order_purchase_timestamp = EXCLUDED.order_purchase_timestamp,
+            order_approved_at = EXCLUDED.order_approved_at,
+            order_delivered_carrier_date = EXCLUDED.order_delivered_carrier_date,
+            order_delivered_customer_date = EXCLUDED.order_delivered_customer_date,
+            order_estimated_delivery_date = EXCLUDED.order_estimated_delivery_date,
+            order_date = EXCLUDED.order_date;
+        """
+        
+    elif table_name == "olist_order_payments":
+        query = f"""
+        -- Step A: Create target table if it does not exist
+        CREATE TABLE IF NOT EXISTS olist_order_payments (
+            order_id VARCHAR PRIMARY KEY,
+            payment_value NUMERIC
+        );
+        
+        -- Step B: Insert data from staging, updating existing rows on conflict
+        INSERT INTO olist_order_payments (order_id, payment_value)
+        SELECT order_id, payment_value
+        FROM {staging_table}
+        ON CONFLICT (order_id)
+        DO UPDATE SET
+            payment_value = EXCLUDED.payment_value;
+        """
+        
+    else:
+        # Fallback for tables we didn't explicitly model yet
+        df.to_sql(table_name, engine, if_exists="append", index=False)
+        logger.info(f"Appended data to {table_name}")
+        return
+
+    # 3. Execute SQL query and drop the staging table
+    with engine.begin() as conn:
+        conn.execute(text(query))
+        conn.execute(text(f"DROP TABLE IF EXISTS {staging_table};"))
+        
+    logger.info(f"Data successfully upserted into database table: {table_name}")
+
+

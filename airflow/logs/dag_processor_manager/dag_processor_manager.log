@@ -1,0 +1,191 @@
+[2026-05-28T21:17:07.694+0530] {manager.py:470} INFO - Processing files using up to 1 processes at a time 
+[2026-05-28T21:17:07.694+0530] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-05-28T21:17:07.694+0530] {manager.py:472} INFO - Checking for new files in /Users/kevinshah/Desktop/project/airflow/dags every 300 seconds
+[2026-05-28T21:17:07.694+0530] {manager.py:737} INFO - Searching for files in /Users/kevinshah/Desktop/project/airflow/dags
+[2026-05-28T21:17:07.695+0530] {manager.py:740} INFO - There are 1 files in /Users/kevinshah/Desktop/project/airflow/dags
+[2026-05-28T21:17:09.449+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  1.67s           2026-05-28T15:47:09
+================================================================================
+[2026-05-28T21:17:41.611+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  1.64s           2026-05-28T15:47:41
+================================================================================
+[2026-05-28T21:18:14.363+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  2.28s           2026-05-28T15:48:14
+================================================================================
+[2026-05-28T21:18:46.379+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  1.78s           2026-05-28T15:48:46
+================================================================================
+[2026-05-28T21:19:18.560+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  1.97s           2026-05-28T15:49:18
+================================================================================
+[2026-05-28T21:19:50.479+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  1.81s           2026-05-28T15:49:50
+================================================================================
+[2026-05-28T21:20:22.354+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  1.76s           2026-05-28T15:50:22
+================================================================================
+[2026-05-28T21:20:54.201+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  1.77s           2026-05-28T15:50:54
+================================================================================
+[2026-05-28T21:21:25.944+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  1.68s           2026-05-28T15:51:25
+================================================================================
+[2026-05-28T21:21:57.825+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  1.82s           2026-05-28T15:51:57
+================================================================================
+[2026-05-28T21:22:07.859+0530] {manager.py:737} INFO - Searching for files in /Users/kevinshah/Desktop/project/airflow/dags
+[2026-05-28T21:22:07.862+0530] {manager.py:740} INFO - There are 1 files in /Users/kevinshah/Desktop/project/airflow/dags
+[2026-05-28T21:22:18.977+0530] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
+[2026-05-28T21:23:26.910+0530] {manager.py:470} INFO - Processing files using up to 1 processes at a time 
+[2026-05-28T21:23:26.910+0530] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-05-28T21:23:26.911+0530] {manager.py:472} INFO - Checking for new files in /Users/kevinshah/Desktop/project/airflow/dags every 300 seconds
+[2026-05-28T21:23:26.911+0530] {manager.py:737} INFO - Searching for files in /Users/kevinshah/Desktop/project/airflow/dags
+[2026-05-28T21:23:26.912+0530] {manager.py:740} INFO - There are 1 files in /Users/kevinshah/Desktop/project/airflow/dags
+[2026-05-28T21:23:28.516+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  1.53s           2026-05-28T15:53:28
+================================================================================
+[2026-05-28T21:24:01.043+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  1.77s           2026-05-28T15:54:01
+================================================================================
+[2026-05-28T21:24:33.324+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  1.71s           2026-05-28T15:54:33
+================================================================================
+[2026-05-28T21:25:05.569+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  1.79s           2026-05-28T15:55:05
+================================================================================
+[2026-05-28T21:25:37.613+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  1.87s           2026-05-28T15:55:37
+================================================================================
+[2026-05-28T21:26:09.614+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  1.89s           2026-05-28T15:56:09
+================================================================================
+[2026-05-28T21:26:41.674+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  1.97s           2026-05-28T15:56:41
+================================================================================
+[2026-05-28T21:27:13.621+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  1.89s           2026-05-28T15:57:13
+================================================================================
+[2026-05-28T21:27:45.251+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  1.56s           2026-05-28T15:57:45
+================================================================================
+[2026-05-28T21:28:17.045+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  1.42s           2026-05-28T15:58:17
+================================================================================
+[2026-05-28T21:28:27.315+0530] {manager.py:737} INFO - Searching for files in /Users/kevinshah/Desktop/project/airflow/dags
+[2026-05-28T21:28:27.317+0530] {manager.py:740} INFO - There are 1 files in /Users/kevinshah/Desktop/project/airflow/dags
+[2026-05-28T21:28:49.877+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  2.00s           2026-05-28T15:58:49
+================================================================================
+[2026-05-28T21:29:21.930+0530] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py                           1           0  1.80s           2026-05-28T15:59:21
+================================================================================

@@ -1,0 +1,69 @@
+2026-05-28 19:39:46,246 [INFO] __main__: === Starting ETL Data Pipeline ===
+2026-05-28 19:39:46,246 [INFO] ingestion.csv_ingest: --- Starting CSV ingestion for olist_customers ---
+2026-05-28 19:39:46,408 [INFO] ingestion.csv_ingest: Successfully read data from source (99441 rows)
+2026-05-28 19:39:46,531 [INFO] ingestion.csv_ingest: Data successfully ingested in bronze layer at /Users/kevinshah/Desktop/project/data/bronze/csv_store/olist_customers_dataset.csv
+2026-05-28 19:39:46,602 [INFO] ingestion.csv_ingest: Data validation passed for olist_customers
+2026-05-28 19:39:46,642 [INFO] storage.parquet_store: Data successfully ingested in silver layer at /Users/kevinshah/Desktop/project/data/silver/csv_store/olist_customers_dataset.parquet
+2026-05-28 19:39:51,047 [INFO] storage.postgre_store: Data successfully upserted into database table: olist_customers
+2026-05-28 19:39:51,048 [INFO] ingestion.csv_ingest: --- Starting CSV ingestion for olist_orders ---
+2026-05-28 19:39:51,296 [INFO] ingestion.csv_ingest: Successfully read data from source (99441 rows)
+2026-05-28 19:39:51,512 [INFO] ingestion.csv_ingest: Data successfully ingested in bronze layer at /Users/kevinshah/Desktop/project/data/bronze/csv_store/olist_orders_dataset.csv
+2026-05-28 19:39:51,772 [INFO] ingestion.csv_ingest: Data validation passed for olist_orders
+2026-05-28 19:39:51,823 [INFO] storage.parquet_store: Data successfully ingested in silver layer at /Users/kevinshah/Desktop/project/data/silver/csv_store/olist_orders_dataset.parquet
+2026-05-28 19:39:57,808 [INFO] storage.postgre_store: Data successfully upserted into database table: olist_orders
+2026-05-28 19:39:57,808 [INFO] ingestion.csv_ingest: --- Starting CSV ingestion for olist_order_payments ---
+2026-05-28 19:39:57,881 [INFO] ingestion.csv_ingest: Successfully read data from source (103886 rows)
+2026-05-28 19:39:58,006 [INFO] ingestion.csv_ingest: Data successfully ingested in bronze layer at /Users/kevinshah/Desktop/project/data/bronze/csv_store/olist_order_payments_dataset.csv
+2026-05-28 19:39:58,074 [INFO] ingestion.csv_ingest: Data validation passed for olist_order_payments
+2026-05-28 19:39:58,091 [INFO] storage.parquet_store: Data successfully ingested in silver layer at /Users/kevinshah/Desktop/project/data/silver/csv_store/olist_order_payments_dataset.parquet
+2026-05-28 19:40:00,394 [INFO] storage.postgre_store: Data successfully upserted into database table: olist_order_payments
+2026-05-28 19:40:00,397 [INFO] ingestion.api_ingest: --- Starting API ingestion for Exchange Rates ---
+2026-05-28 19:40:02,500 [INFO] ingestion.api_ingest: Data successfully ingested in bronze layer at /Users/kevinshah/Desktop/project/data/bronze/api_store/inr_rates.json
+2026-05-28 19:40:02,505 [INFO] storage.parquet_store: Data successfully ingested in silver layer at /Users/kevinshah/Desktop/project/data/silver/api_store/inr_rates.parquet
+2026-05-28 19:40:02,507 [INFO] __main__: === ETL Data Pipeline Finished Successfully ===
+2026-05-28 20:01:28,227 [INFO] __main__: === Starting ETL Data Pipeline ===
+2026-05-28 20:01:28,228 [INFO] ingestion.csv_ingest: --- Starting CSV ingestion for olist_customers ---
+2026-05-28 20:01:28,341 [INFO] ingestion.csv_ingest: Successfully read data from source (99441 rows)
+2026-05-28 20:01:28,464 [INFO] ingestion.csv_ingest: Data successfully ingested in bronze layer at /Users/kevinshah/Desktop/project/data/bronze/csv_store/olist_customers_dataset.csv
+2026-05-28 20:01:28,544 [INFO] ingestion.csv_ingest: Data validation passed for olist_customers
+2026-05-28 20:01:28,589 [INFO] storage.parquet_store: Data successfully ingested in silver layer at /Users/kevinshah/Desktop/project/data/silver/csv_store/olist_customers_dataset.parquet
+2026-05-28 20:01:32,791 [INFO] storage.postgre_store: Data successfully upserted into database table: olist_customers
+2026-05-28 20:01:32,794 [INFO] ingestion.csv_ingest: --- Starting CSV ingestion for olist_orders ---
+2026-05-28 20:01:33,054 [INFO] ingestion.csv_ingest: Successfully read data from source (99441 rows)
+2026-05-28 20:01:33,292 [INFO] ingestion.csv_ingest: Data successfully ingested in bronze layer at /Users/kevinshah/Desktop/project/data/bronze/csv_store/olist_orders_dataset.csv
+2026-05-28 20:01:33,569 [INFO] ingestion.csv_ingest: Data validation passed for olist_orders
+2026-05-28 20:01:33,628 [INFO] storage.parquet_store: Data successfully ingested in silver layer at /Users/kevinshah/Desktop/project/data/silver/csv_store/olist_orders_dataset.parquet
+2026-05-28 20:01:38,943 [INFO] storage.postgre_store: Data successfully upserted into database table: olist_orders
+2026-05-28 20:01:38,944 [INFO] ingestion.csv_ingest: --- Starting CSV ingestion for olist_order_payments ---
+2026-05-28 20:01:39,019 [INFO] ingestion.csv_ingest: Successfully read data from source (103886 rows)
+2026-05-28 20:01:39,142 [INFO] ingestion.csv_ingest: Data successfully ingested in bronze layer at /Users/kevinshah/Desktop/project/data/bronze/csv_store/olist_order_payments_dataset.csv
+2026-05-28 20:01:39,212 [INFO] ingestion.csv_ingest: Data validation passed for olist_order_payments
+2026-05-28 20:01:39,231 [INFO] storage.parquet_store: Data successfully ingested in silver layer at /Users/kevinshah/Desktop/project/data/silver/csv_store/olist_order_payments_dataset.parquet
+2026-05-28 20:01:41,585 [INFO] storage.postgre_store: Data successfully upserted into database table: olist_order_payments
+2026-05-28 20:01:41,587 [INFO] ingestion.api_ingest: --- Starting API ingestion for Exchange Rates ---
+2026-05-28 20:01:42,509 [INFO] ingestion.api_ingest: Data successfully ingested in bronze layer at /Users/kevinshah/Desktop/project/data/bronze/api_store/inr_rates.json
+2026-05-28 20:01:42,512 [INFO] storage.parquet_store: Data successfully ingested in silver layer at /Users/kevinshah/Desktop/project/data/silver/api_store/inr_rates.parquet
+2026-05-28 20:01:42,514 [INFO] __main__: === ETL Data Pipeline Finished Successfully ===
+2026-05-28 20:09:37,873 [INFO] __main__: === Starting ETL Data Pipeline ===
+2026-05-28 20:09:37,873 [INFO] ingestion.csv_ingest: --- Starting CSV ingestion for olist_customers ---
+2026-05-28 20:09:38,002 [INFO] ingestion.csv_ingest: Successfully read data from source (99441 rows)
+2026-05-28 20:09:38,126 [INFO] ingestion.csv_ingest: Data successfully ingested in bronze layer at /Users/kevinshah/Desktop/project/data/bronze/csv_store/olist_customers_dataset.csv
+2026-05-28 20:09:38,199 [INFO] ingestion.csv_ingest: Data validation passed for olist_customers
+2026-05-28 20:09:38,248 [INFO] storage.parquet_store: Data successfully ingested in silver layer at /Users/kevinshah/Desktop/project/data/silver/csv_store/olist_customers_dataset.parquet
+2026-05-28 20:09:42,191 [INFO] storage.postgre_store: Data successfully upserted into database table: olist_customers
+2026-05-28 20:09:42,192 [INFO] ingestion.csv_ingest: --- Starting CSV ingestion for olist_orders ---
+2026-05-28 20:09:42,440 [INFO] ingestion.csv_ingest: Successfully read data from source (99441 rows)
+2026-05-28 20:09:42,656 [INFO] ingestion.csv_ingest: Data successfully ingested in bronze layer at /Users/kevinshah/Desktop/project/data/bronze/csv_store/olist_orders_dataset.csv
+2026-05-28 20:09:42,919 [INFO] ingestion.csv_ingest: Data validation passed for olist_orders
+2026-05-28 20:09:42,974 [INFO] storage.parquet_store: Data successfully ingested in silver layer at /Users/kevinshah/Desktop/project/data/silver/csv_store/olist_orders_dataset.parquet
+2026-05-28 20:09:48,192 [INFO] storage.postgre_store: Data successfully upserted into database table: olist_orders
+2026-05-28 20:09:48,193 [INFO] ingestion.csv_ingest: --- Starting CSV ingestion for olist_order_payments ---
+2026-05-28 20:09:48,289 [INFO] ingestion.csv_ingest: Successfully read data from source (103886 rows)
+2026-05-28 20:09:48,411 [INFO] ingestion.csv_ingest: Data successfully ingested in bronze layer at /Users/kevinshah/Desktop/project/data/bronze/csv_store/olist_order_payments_dataset.csv
+2026-05-28 20:09:48,476 [INFO] ingestion.csv_ingest: Data validation passed for olist_order_payments
+2026-05-28 20:09:48,494 [INFO] storage.parquet_store: Data successfully ingested in silver layer at /Users/kevinshah/Desktop/project/data/silver/csv_store/olist_order_payments_dataset.parquet
+2026-05-28 20:09:51,263 [INFO] storage.postgre_store: Data successfully upserted into database table: olist_order_payments
+2026-05-28 20:09:51,264 [INFO] ingestion.api_ingest: --- Starting API ingestion for Exchange Rates ---
+2026-05-28 20:09:53,653 [INFO] ingestion.api_ingest: Data successfully ingested in bronze layer at /Users/kevinshah/Desktop/project/data/bronze/api_store/inr_rates.json
+2026-05-28 20:09:53,659 [INFO] storage.parquet_store: Data successfully ingested in silver layer at /Users/kevinshah/Desktop/project/data/silver/api_store/inr_rates.parquet
+2026-05-28 20:09:53,661 [INFO] __main__: === ETL Data Pipeline Finished Successfully ===

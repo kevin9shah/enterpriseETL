@@ -2,8 +2,8 @@ certifi==2026.5.20
 charset-normalizer==3.4.7
 Faker==40.19.1
 idna==3.16
-numpy==2.4.6
-pandas==3.0.3
+numpy==1.26.4
+pandas==2.1.4
 psycopg2-binary==2.9.12
 pyarrow==24.0.0
 python-dateutil==2.9.0.post0
@@ -11,3 +11,7 @@ python-dotenv==1.2.2
 requests==2.34.2
 six==1.17.0
 urllib3==2.7.0
+pandera==0.18.0
+pytest==8.0.0
+pydantic-settings
+apache-airflow==2.9.1
