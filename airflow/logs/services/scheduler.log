@@ -647,3 +647,5 @@ export DISABLE_PANDERA_IMPORT_WARNING=True
 [2026-05-28T21:59:02.872+0530] {manager.py:536} INFO - Deactivated 1 DAGs which are no longer present in file.
 [2026-05-28T21:59:02.874+0530] {manager.py:540} INFO - Deleted DAG medallion_etl_pipeline in serialized_dag table
 [[34m2026-05-28T22:03:30.995+0530[0m] {[34mscheduler_job_runner.py:[0m1595} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2026-05-28T22:08:31.026+0530[0m] {[34mscheduler_job_runner.py:[0m1595} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2026-05-28T22:13:31.070+0530[0m] {[34mscheduler_job_runner.py:[0m1595} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m

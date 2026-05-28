@@ -12,14 +12,44 @@ The pipeline implements the industry-standard **Medallion Architecture**, organi
 
 ```mermaid
 graph TD
-    A[External CSV Files] -->|Ingest Raw| B[(Bronze Layer: CSV)]
-    B -->|Clean & Format| C[(Silver Layer: Parquet)]
-    C -->|Pandera Validation| D{Data Quality Gate}
-    D -->|Passed| E[(Gold Layer: PostgreSQL)]
-    D -->|Failed| F[Quarantine Zone: CSV]
-    
-    G[REST API: Exchange Rates] -->|Ingest Raw JSON| H[(Bronze Layer: JSON)]
-    H -->|Normalize JSON| I[(Silver Layer: Parquet)]
+    subgraph Sources
+        A["📄 CSV Files (Olist)"]
+        G["🌐 REST API (Exchange Rates)"]
+    end
+
+    subgraph Bronze["🟫 Bronze Layer (Raw Storage)"]
+        B[("CSV copies")]
+        H[("inr_rates.json")]
+    end
+
+    subgraph Silver["🥈 Silver Layer (Parquet)"]
+        C[("olist_*.parquet")]
+        I[("inr_rates.parquet")]
+    end
+
+    subgraph Quality["🛡️ Data Quality Gate"]
+        D{"Pandera Validation"}
+        F["Quarantine Zone"]
+    end
+
+    subgraph Gold["🥇 Gold Layer (PostgreSQL)"]
+        E1[("olist_customers")]
+        E2[("olist_orders")]
+        E3[("olist_order_payments")]
+        E4[("inr_rates")]
+    end
+
+    A -->|Ingest Raw| B
+    B -->|Clean & Format| C
+    C -->|Validate| D
+    D -->|Valid rows| E1
+    D -->|Valid rows| E2
+    D -->|Valid rows| E3
+    D -->|Failed rows| F
+
+    G -->|Ingest Raw JSON| H
+    H -->|Normalize| I
+    I -->|Staging Upsert| E4
 ```
 
 ### 1. 🟫 Bronze Layer (Raw Storage)
@@ -37,7 +67,11 @@ graph TD
 
 ### 3. 🥇 Gold Layer (PostgreSQL Database Warehouse)
 * **Goal**: Consolidate cleaned analytics-ready data in a relational format supporting database constraints, indexes, and complex BI queries.
-* **Storage**: Native PostgreSQL tables (`olist_customers`, `olist_orders`, `olist_order_payments`).
+* **Storage**: Native PostgreSQL tables:
+  * `olist_customers` — e-commerce customer records
+  * `olist_orders` — order lifecycle events
+  * `olist_order_payments` — aggregated payment values
+  * `inr_rates` — live INR exchange rates (sourced from REST API)
 
 ---
 
@@ -92,13 +126,18 @@ The pipeline runs are managed and orchestrated by a local **Apache Airflow 2.9.1
 
 ```mermaid
 graph TD
-    Start([Start]) --> api_ingestion[api_ingestion]
+    Start([Start]) --> api_ingestion
+
+    subgraph api_pipeline ["🌐 API Pipeline (single task)"]
+        api_ingestion["api_ingestion\nBronze + Silver + Gold\ninr_rates → PostgreSQL"]
+    end
+
     api_ingestion --> End([End])
 
     Start --> bronze_customers[bronze_olist_customers]
     bronze_customers --> silver_customers[silver_olist_customers]
     silver_customers --> gold_customers[gold_olist_customers]
-    gold_customers --> End
+    gold_customers --> End([End])
 
     Start --> bronze_orders[bronze_olist_orders]
     bronze_orders --> silver_orders[silver_olist_orders]
@@ -111,7 +150,10 @@ graph TD
     gold_payments --> End
 ```
 
+> **Note on API task design**: The `api_ingestion` Airflow task runs `api_ingest.main()` as a single atomic unit covering all three layers (Bronze JSON → Silver Parquet → Gold PostgreSQL). CSV datasets are split into three separate per-layer tasks (`bronze_*`, `silver_*`, `gold_*`) to allow granular retries at each layer independently.
+
 ### Key Airflow Features
+
 * **Directed Acyclic Graph (DAG)**: The workflow is configured in [medallion_etl.py](file:///Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py).
 * **Decoupled Task execution**: Each CSV table processes independently through its own sequential layers (`Bronze -> Silver -> Gold`). If a database load fails for a specific table in Gold, you can retry *only* the failing loading task without re-running any CSV downloads or silver transformations.
 * **Parallel Execution**: All Bronze tasks and API ingestion run in parallel, maximizing local CPU utilization.

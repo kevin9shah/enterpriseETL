@@ -2821,3 +2821,716 @@ export DISABLE_PANDERA_IMPORT_WARNING=True
 [2026-05-28T22:04:57.049+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:04:57.049+0530] {dag.py:3096} INFO - Sync 1 DAGs
 [2026-05-28T22:04:57.053+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:04:57.053+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
 [2026-05-28T22:04:57.061+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.737 seconds
+[2026-05-28T22:05:28.434+0530] {processor.py:161} INFO - Started process (PID=30652) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:05:28.436+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:05:28.436+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:05:28.436+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:05:29.016+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:05:29.061+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:05:29.140+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:05:29.140+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:05:29.144+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:05:29.144+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:05:29.152+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.719 seconds
+[2026-05-28T22:06:00.526+0530] {processor.py:161} INFO - Started process (PID=30843) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:06:00.527+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:06:00.527+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:06:00.527+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:06:01.096+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:06:01.140+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:06:01.223+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:06:01.223+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:06:01.227+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:06:01.227+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:06:01.234+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.711 seconds
+[2026-05-28T22:06:32.540+0530] {processor.py:161} INFO - Started process (PID=30877) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:06:32.541+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:06:32.541+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:06:32.541+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:06:33.100+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:06:33.143+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:06:33.218+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:06:33.218+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:06:33.221+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:06:33.221+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:06:33.228+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.689 seconds
+[2026-05-28T22:07:04.501+0530] {processor.py:161} INFO - Started process (PID=30919) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:07:04.502+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:07:04.503+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:07:04.502+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:07:05.168+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:07:05.232+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:07:05.317+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:07:05.317+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:07:05.321+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:07:05.321+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:07:05.329+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.829 seconds
+[2026-05-28T22:07:36.581+0530] {processor.py:161} INFO - Started process (PID=30953) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:07:36.582+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:07:36.583+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:07:36.583+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:07:37.128+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:07:37.172+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:07:37.248+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:07:37.248+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:07:37.251+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:07:37.251+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:07:37.258+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.678 seconds
+[2026-05-28T22:08:08.529+0530] {processor.py:161} INFO - Started process (PID=30987) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:08:08.531+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:08:08.531+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:08:08.531+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:08:09.096+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:08:09.141+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:08:09.223+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:08:09.223+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:08:09.227+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:08:09.227+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:08:09.235+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.707 seconds
+[2026-05-28T22:08:40.501+0530] {processor.py:161} INFO - Started process (PID=31019) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:08:40.502+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:08:40.502+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:08:40.502+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:08:41.063+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:08:41.108+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:08:41.193+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:08:41.193+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:08:41.196+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:08:41.196+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:08:41.203+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.704 seconds
+[2026-05-28T22:09:12.493+0530] {processor.py:161} INFO - Started process (PID=31051) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:09:12.494+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:09:12.495+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:09:12.495+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:09:13.050+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:09:13.092+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:09:13.185+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:09:13.185+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:09:13.194+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:09:13.194+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:09:13.203+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.711 seconds
+[2026-05-28T22:09:44.506+0530] {processor.py:161} INFO - Started process (PID=31085) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:09:44.507+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:09:44.507+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:09:44.507+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:09:45.078+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:09:45.123+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:09:45.202+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:09:45.202+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:09:45.205+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:09:45.205+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:09:45.212+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.708 seconds
+[2026-05-28T22:10:16.479+0530] {processor.py:161} INFO - Started process (PID=31116) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:10:16.481+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:10:16.481+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:10:16.481+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:10:17.039+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:10:17.081+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:10:17.168+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:10:17.168+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:10:17.172+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:10:17.172+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:10:17.184+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.706 seconds
+[2026-05-28T22:10:48.445+0530] {processor.py:161} INFO - Started process (PID=31153) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:10:48.446+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:10:48.446+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:10:48.446+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:10:49.007+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:10:49.049+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:10:49.125+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:10:49.125+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:10:49.129+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:10:49.128+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:10:49.137+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.693 seconds
+[2026-05-28T22:11:20.403+0530] {processor.py:161} INFO - Started process (PID=31194) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:11:20.405+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:11:20.405+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:11:20.405+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:11:20.961+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:11:21.004+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:11:21.079+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:11:21.079+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:11:21.083+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:11:21.082+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:11:21.089+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.687 seconds
+[2026-05-28T22:11:52.375+0530] {processor.py:161} INFO - Started process (PID=31250) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:11:52.377+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:11:52.377+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:11:52.377+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:11:52.944+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:11:52.986+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:11:53.060+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:11:53.060+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:11:53.063+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:11:53.063+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:11:53.070+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.696 seconds
+[2026-05-28T22:12:24.321+0530] {processor.py:161} INFO - Started process (PID=31306) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:12:24.322+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:12:24.322+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:12:24.322+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:12:24.910+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:12:24.953+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:12:25.029+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:12:25.028+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:12:25.032+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:12:25.032+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:12:25.039+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.719 seconds
+[2026-05-28T22:12:56.368+0530] {processor.py:161} INFO - Started process (PID=31369) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:12:56.370+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:12:56.370+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:12:56.370+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:12:57.039+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:12:57.087+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:12:57.161+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:12:57.161+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:12:57.165+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:12:57.164+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:12:57.172+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.804 seconds
+[2026-05-28T22:13:28.461+0530] {processor.py:161} INFO - Started process (PID=31405) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:13:28.462+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:13:28.462+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:13:28.462+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:13:29.073+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:13:29.114+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:13:29.189+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:13:29.189+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:13:29.192+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:13:29.192+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:13:29.199+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.739 seconds
+[2026-05-28T22:14:00.459+0530] {processor.py:161} INFO - Started process (PID=31460) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:14:00.460+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:14:00.460+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:14:00.460+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:14:01.032+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:14:01.076+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:14:01.150+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:14:01.150+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:14:01.154+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:14:01.153+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:14:01.160+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.702 seconds
+[2026-05-28T22:14:32.456+0530] {processor.py:161} INFO - Started process (PID=31492) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:14:32.457+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:14:32.457+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:14:32.457+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:14:33.016+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:14:33.060+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:14:33.135+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:14:33.135+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:14:33.138+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:14:33.138+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:14:33.145+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.690 seconds
+[2026-05-28T22:15:04.426+0530] {processor.py:161} INFO - Started process (PID=31528) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:15:04.427+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:15:04.428+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:15:04.428+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:15:04.991+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:15:05.035+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:15:05.110+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:15:05.109+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:15:05.113+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:15:05.113+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:15:05.120+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.695 seconds
+[2026-05-28T22:15:36.406+0530] {processor.py:161} INFO - Started process (PID=31557) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:15:36.407+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:15:36.407+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:15:36.407+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:15:36.984+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:15:37.033+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:15:37.118+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:15:37.118+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:15:37.122+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:15:37.122+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:15:37.129+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.725 seconds
+[2026-05-28T22:16:08.456+0530] {processor.py:161} INFO - Started process (PID=31590) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:16:08.458+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:16:08.458+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:16:08.458+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:16:09.025+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:16:09.068+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:16:09.146+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:16:09.146+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:16:09.149+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:16:09.149+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:16:09.156+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.700 seconds
+[2026-05-28T22:16:40.478+0530] {processor.py:161} INFO - Started process (PID=31637) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:16:40.479+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:16:40.479+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:16:40.479+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:16:41.043+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:16:41.089+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:16:41.164+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:16:41.164+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:16:41.167+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:16:41.167+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:16:41.174+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.698 seconds
+[2026-05-28T22:17:12.436+0530] {processor.py:161} INFO - Started process (PID=31668) to work on /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:17:12.437+0530] {processor.py:830} INFO - Processing file /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py for tasks to queue
+[2026-05-28T22:17:12.437+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:17:12.437+0530] {dagbag.py:545} INFO - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:17:13.004+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+[2026-05-28T22:17:13.049+0530] {processor.py:840} INFO - DAG(s) 'medallion_etl_pipeline' retrieved from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py
+[2026-05-28T22:17:13.126+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:17:13.126+0530] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-05-28T22:17:13.129+0530] {logging_mixin.py:188} INFO - [2026-05-28T22:17:13.129+0530] {dag.py:3954} INFO - Setting next_dagrun for medallion_etl_pipeline to None, run_after=None
+[2026-05-28T22:17:13.136+0530] {processor.py:183} INFO - Processing /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py took 0.702 seconds

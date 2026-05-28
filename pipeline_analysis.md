@@ -36,13 +36,13 @@ graph LR
 
 While your project has a clean separation of concerns, top-tier data engineering roles require addressing the following limitations:
 
-### A. Destructive Writes (`if_exists="replace"`)
-*   **Issue**: In [postgre_store.py:L30](file:///Users/kevinshah/Desktop/project/storage/postgre_store.py#L30), you use `if_exists="replace"`. This completely drops database tables and recreates them, which breaks relational integrity, drops indexes, and is highly inefficient in production.
-*   **Solution**: Refactor this to use an **UPSERT (Merge)** or **Append** strategy using primary keys.
+### A. Destructive Writes (`if_exists="replace"`) — ✅ RESOLVED
+*   **Issue**: In [postgre_store.py](file:///Users/kevinshah/Desktop/project/storage/postgre_store.py), `if_exists="replace"` completely dropped database tables and recreated them, breaking relational integrity, dropping indexes, and being highly inefficient in production.
+*   **Solution**: Refactored to use a **Staging Upsert** (`INSERT ... SELECT ... ON CONFLICT DO UPDATE`) strategy for all four Gold tables.
 
-### B. Isolated API Pipeline
-*   **Issue**: [main.py](file:///Users/kevinshah/Desktop/project/main.py) only imports [csv_ingest.py](file:///Users/kevinshah/Desktop/project/ingestion/csv_ingest.py). The exchange rates pipeline ([api_ingest.py](file:///Users/kevinshah/Desktop/project/ingestion/api_ingest.py)) is never executed.
-*   **Solution**: Standardize entry points and orchestrate them together.
+### B. Isolated API Pipeline — ✅ RESOLVED
+*   **Issue**: [api_ingest.py](file:///Users/kevinshah/Desktop/project/ingestion/api_ingest.py) only wrote to Bronze and Silver layers. Exchange rate data never reached the Gold PostgreSQL warehouse.
+*   **Solution**: Added the `inr_rates` upsert block to [postgre_store.py](file:///Users/kevinshah/Desktop/project/storage/postgre_store.py) and wired `put_in_postgre(df_silver, "inr_rates")` in `api_ingest.py` after the Parquet write. Verified with a successful run on 2026-05-28.
 
 ### C. Lack of Orchestration & Scheduling
 *   **Issue**: Execution relies on running python scripts sequentially. If any step fails halfway, there is no state recovery or retry mechanism.
