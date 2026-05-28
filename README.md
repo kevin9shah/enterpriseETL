@@ -90,31 +90,34 @@ To avoid destructive writes (like `.to_sql(if_exists="replace")` which drops Pos
 
 The pipeline runs are managed and orchestrated by a local **Apache Airflow 2.9.1** setup.
 
-```
-       ┌──────────────┐
-       │    Start     │
-       └──────┬───────┘
-              │
-      ┌───────┴───────┐
-      │               │
-┌─────▼─────┐   ┌─────▼─────┐
-│   CSV     │   │    API    │
-│ Ingestion │   │ Ingestion │
-└─────┬─────┘   └─────┬─────┘
-      │               │
-      └───────┬───────┘
-              │
-       ┌──────▼───────┐
-       │     End      │
-       └──────────────┘
+```mermaid
+graph TD
+    Start([Start]) --> api_ingestion[api_ingestion]
+    api_ingestion --> End([End])
+
+    Start --> bronze_customers[bronze_olist_customers]
+    bronze_customers --> silver_customers[silver_olist_customers]
+    silver_customers --> gold_customers[gold_olist_customers]
+    gold_customers --> End
+
+    Start --> bronze_orders[bronze_olist_orders]
+    bronze_orders --> silver_orders[silver_olist_orders]
+    silver_orders --> gold_orders[gold_olist_orders]
+    gold_orders --> End
+
+    Start --> bronze_payments[bronze_olist_order_payments]
+    bronze_payments --> silver_payments[silver_olist_order_payments]
+    silver_payments --> gold_payments[gold_olist_order_payments]
+    gold_payments --> End
 ```
 
 ### Key Airflow Features
 * **Directed Acyclic Graph (DAG)**: The workflow is configured in [medallion_etl.py](file:///Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py).
-* **Parallel Execution**: CSV and API tasks run in parallel to maximize throughput.
+* **Decoupled Task execution**: Each CSV table processes independently through its own sequential layers (`Bronze -> Silver -> Gold`). If a database load fails for a specific table in Gold, you can retry *only* the failing loading task without re-running any CSV downloads or silver transformations.
+* **Parallel Execution**: All Bronze tasks and API ingestion run in parallel, maximizing local CPU utilization.
 * **Retry Policies**:
   * **API Ingestion**: Configured with 3 retries, a base delay of 1 minute, and **exponential backoff** to handle transient network issues or API rate limits gracefully.
-  * **CSV Ingestion**: 1 retry with a 30-second delay.
+  * **CSV Layers**: Layer transitions configured with automatic retries and 30-second delays.
 
 ---
 

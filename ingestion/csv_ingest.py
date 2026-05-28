@@ -56,77 +56,104 @@ def clean_payments(df : pd.DataFrame) -> pd.DataFrame:
     df = df.groupby("order_id", as_index=False)["payment_value"].sum()
     return df
 
+def ingest_bronze(table_name: str, file_name: str) -> bool:
+    source_path = BASE_DIR / f"dataset/{file_name}.csv"
+    bronze_path = BASE_DIR / f"data/bronze/csv_store/{file_name}.csv"
+    
+    # Check if source file exists
+    if not source_path.exists():
+        logger.warning(f"Skipping {file_name}: Source file not found at {source_path}")
+        return False
+        
+    logger.info(f"--- Starting CSV Bronze Ingestion for {table_name} ---")
+    df = pd.read_csv(source_path)
+    if df.empty:
+        logger.warning(f"{file_name}.csv is empty, skipping ingestion.")
+        return False
+        
+    logger.info(f"Successfully read data from source ({len(df)} rows)")
+    bronze_path.parent.mkdir(parents=True, exist_ok=True)
+    df.to_csv(bronze_path, index=False)
+    logger.info(f"Data successfully ingested in bronze layer at {bronze_path}")
+    return True
+
+def ingest_silver(table_name: str, file_name: str) -> bool:
+    bronze_path = BASE_DIR / f"data/bronze/csv_store/{file_name}.csv"
+    silver_path = BASE_DIR / f"data/silver/csv_store/{file_name}.parquet"
+    
+    if not bronze_path.exists():
+        logger.error(f"Cannot run Silver transformation for {table_name}: Bronze file not found at {bronze_path}")
+        return False
+        
+    logger.info(f"--- Starting CSV Silver Ingestion/Validation for {table_name} ---")
+    df = pd.read_csv(bronze_path)
+    if df.empty:
+        logger.warning(f"{file_name}.csv is empty, skipping transformation.")
+        return False
+        
+    df.columns = df.columns.str.lower()
+    df = df.drop_duplicates()
+    if table_name == "olist_customers":
+        df = clean_customers(df)
+    elif table_name == "olist_order_payments":
+        df = clean_payments(df)
+    elif table_name == "olist_orders":
+        df = clean_orders(df)
+    else:
+        df.columns = df.columns.str.lower()
+        df = df.drop_duplicates()
+        
+    # --- DATA QUALITY GATE ---
+    schema = SCHEMA_MAP.get(table_name)
+    if schema:
+        try:
+            # Validate the cleaned DataFrame
+            df = schema.validate(df, lazy=True)
+            logger.info(f"Data validation passed for {table_name}")
+        except pa.errors.SchemaErrors as err:
+            logger.warning(f"Data validation failed for {table_name}!")
+            # Get the rows that failed checks
+            failure_cases = err.failure_cases
+            logger.warning(f"Found {len(failure_cases)} validation errors.")
+            
+            # Create quarantine folder and write failures
+            quarantine_path = BASE_DIR / f"data/quarantine/{file_name}_failures.csv"
+            quarantine_path.parent.mkdir(parents=True, exist_ok=True)
+            failure_cases.to_csv(quarantine_path, index=False)
+            logger.info(f"Quarantined validation errors saved to {quarantine_path}")
+            
+            # Drop rows that failed validation to let clean data proceed
+            failed_indices = failure_cases["index"].dropna().astype(int).unique()
+            df = df.drop(index=failed_indices, errors="ignore")
+            logger.info(f"Proceeding with {len(df)} valid records.")
+    # -------------------------
+  
+    silver_path.parent.mkdir(parents=True, exist_ok=True)
+    silver_parquet(df, silver_path)
+    return True
+
+def ingest_gold(table_name: str, file_name: str) -> bool:
+    silver_path = BASE_DIR / f"data/silver/csv_store/{file_name}.parquet"
+    
+    if not silver_path.exists():
+        logger.error(f"Cannot run Gold loading for {table_name}: Silver file not found at {silver_path}")
+        return False
+        
+    logger.info(f"--- Starting CSV Gold Loading for {table_name} ---")
+    df_silver = pd.read_parquet(silver_path)
+    put_in_postgre(df_silver, table_name)
+    return True
+
 def main():
     for dataset in DATASETS:
         table_name = dataset["table_name"]
         file_name = dataset["file_name"]
         
-        source_path = BASE_DIR / f"dataset/{file_name}.csv"
-        bronze_path = BASE_DIR / f"data/bronze/csv_store/{file_name}.csv"
-        silver_path = BASE_DIR / f"data/silver/csv_store/{file_name}.parquet"
-        
-        # Check if source file exists
-        if not source_path.exists():
-            logger.warning(f"Skipping {file_name}: Source file not found at {source_path}")
-            continue
-            
-        logger.info(f"--- Starting CSV ingestion for {table_name} ---")
-        
-        # 1. Bronze Layer (Raw Ingestion)
-        df = pd.read_csv(source_path)
-        if df.empty:
-            logger.warning(f"{file_name}.csv is empty, skipping ingestion.")
-            continue
-            
-        logger.info(f"Successfully read data from source ({len(df)} rows)")
-        bronze_path.parent.mkdir(parents=True, exist_ok=True)
-        df.to_csv(bronze_path, index=False)
-        logger.info(f"Data successfully ingested in bronze layer at {bronze_path}")
-        
-        # 2. Silver Layer (Cleaning & Parquet Format)
-        df.columns = df.columns.str.lower()
-        df = df.drop_duplicates()
-        if table_name == "olist_customers":
-            df = clean_customers(df)
-        elif table_name == "olist_order_payments":
-            df = clean_payments(df)
-        elif table_name == "olist_orders":
-            df = clean_orders(df)
-        else:
-            df.columns = df.columns.str.lower()
-            df = df.drop_duplicates()
-            
-        # --- DATA QUALITY GATE ---
-        schema = SCHEMA_MAP.get(table_name)
-        if schema:
-            try:
-                # Validate the cleaned DataFrame
-                df = schema.validate(df, lazy=True)
-                logger.info(f"Data validation passed for {table_name}")
-            except pa.errors.SchemaErrors as err:
-                logger.warning(f"Data validation failed for {table_name}!")
-                # Get the rows that failed checks
-                failure_cases = err.failure_cases
-                logger.warning(f"Found {len(failure_cases)} validation errors.")
-                
-                # Create quarantine folder and write failures
-                quarantine_path = BASE_DIR / f"data/quarantine/{file_name}_failures.csv"
-                quarantine_path.parent.mkdir(parents=True, exist_ok=True)
-                failure_cases.to_csv(quarantine_path, index=False)
-                logger.info(f"Quarantined validation errors saved to {quarantine_path}")
-                
-                # Drop rows that failed validation to let clean data proceed
-                failed_indices = failure_cases["index"].dropna().astype(int).unique()
-                df = df.drop(index=failed_indices, errors="ignore")
-                logger.info(f"Proceeding with {len(df)} valid records.")
-        # -------------------------
-      
-        silver_path.parent.mkdir(parents=True, exist_ok=True)
-        silver_parquet(df, silver_path)
-
-        # 3. Gold Layer (PostgreSQL)
-        df_silver = pd.read_parquet(silver_path)
-        put_in_postgre(df_silver, table_name)
+        success = ingest_bronze(table_name, file_name)
+        if success:
+            success = ingest_silver(table_name, file_name)
+        if success:
+            ingest_gold(table_name, file_name)
 
 if __name__ == "__main__":
     main()
