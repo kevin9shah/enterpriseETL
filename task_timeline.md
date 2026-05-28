@@ -6,8 +6,8 @@ This file tracks the modernization tasks completed, in progress, and planned for
 
 ## 📋 Status Overview
 - **Project Location**: `/Users/kevinshah/Desktop/project`
-- **Completed Phases**: Pipeline Entry Points, SQL Upserts (Medallion Gold Loading)
-- **Next Target**: Environment Isolation (Dockerization)
+- **Completed Phases**: Pipeline Entry Points, SQL Upserts, Containerization, Data Quality, Orchestration, **API Gold Layer (`inr_rates` → PostgreSQL)**
+- **Next Target**: Alerting webhooks (Phase 6), CI/CD GitHub Actions (Phase 7)
 
 ---
 
@@ -40,9 +40,19 @@ This file tracks the modernization tasks completed, in progress, and planned for
 
 ### [x] Phase 5: Production-Grade Orchestration (COMPLETED)
 *   [x] Pick an orchestrator (Apache Airflow).
-*   [x] Restructure Python scripts into distinct pipeline tasks.
-*   [x] Define a Directed Acyclic Graph (DAG) with task dependencies.
+*   [x] Restructure Python scripts into distinct pipeline tasks (`ingest_bronze`, `ingest_silver`, `ingest_gold`).
+*   [x] Define a Directed Acyclic Graph (DAG) with task dependencies in [airflow/dags/medallion_etl.py](file:///Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py).
 *   [x] Add task retry logic with exponential backoff, especially for API request operations.
+*   [x] Decouple monolithic pipeline into granular per-layer tasks for independent retries.
+
+### [x] Phase 5b: API Gold Layer — `inr_rates` PostgreSQL Load (COMPLETED — 2026-05-28)
+*   [x] Add `inr_rates` upsert block to [storage/postgre_store.py](file:///Users/kevinshah/Desktop/project/storage/postgre_store.py):
+    *   Schema: `currency VARCHAR PRIMARY KEY, rate NUMERIC`
+    *   Strategy: `INSERT ... SELECT FROM staging ON CONFLICT (currency) DO UPDATE SET rate = EXCLUDED.rate`
+*   [x] Update [storage/parquet_store.py](file:///Users/kevinshah/Desktop/project/storage/parquet_store.py) — `silver_parquet_api` already returns the DataFrame (no change needed).
+*   [x] Update [ingestion/api_ingest.py](file:///Users/kevinshah/Desktop/project/ingestion/api_ingest.py) to capture `df_silver` and call `put_in_postgre(df_silver, "inr_rates")` after the Parquet write.
+*   [x] Run `python -m ingestion.api_ingest` — completed successfully with no errors.
+*   [x] Exchange rate data now flows through the full Bronze → Silver → Gold pipeline.
 
 ### [/] Phase 6: Observability (Logging, Configuration, Alerting) (IN PROGRESS)
 *   [x] Refactor raw print statements to use the Python standard `logging` library with structured format outputs.
@@ -58,7 +68,9 @@ This file tracks the modernization tasks completed, in progress, and planned for
 
 ## 📈 Context for Future AI Agents
 *   **Database Credentials**: Located in [.env](file:///Users/kevinshah/Desktop/project/.env)
-*   **Execution Command**: Run `python3 main.py` in `/Users/kevinshah/Desktop/project` to execute the current pipeline.
+*   **Execution Command**: Run `python3 main.py` in `/Users/kevinshah/Desktop/project` to execute the full pipeline (CSV + API, all three layers).
+*   **API Execution**: Run `python -m ingestion.api_ingest` to run only the exchange-rate pipeline (Bronze → Silver → Gold for `inr_rates`).
 *   **Ingestion Logic**: CSV logic resides in [ingestion/csv_ingest.py](file:///Users/kevinshah/Desktop/project/ingestion/csv_ingest.py). API logic resides in [ingestion/api_ingest.py](file:///Users/kevinshah/Desktop/project/ingestion/api_ingest.py).
 *   **Storage Logic**: Parquet formatting resides in [storage/parquet_store.py](file:///Users/kevinshah/Desktop/project/storage/parquet_store.py). PostgreSQL connection and staging-table loading resides in [storage/postgre_store.py](file:///Users/kevinshah/Desktop/project/storage/postgre_store.py).
-*   **Staging Upsert Pattern**: Instead of dropping tables, data is written to `temp_stage_<table_name>` and upserted using a native SQL merge statement (`ON CONFLICT`). Target schemas are explicitly generated.
+*   **Staging Upsert Pattern**: All four tables (`olist_customers`, `olist_orders`, `olist_order_payments`, `inr_rates`) write to `temp_stage_<table_name>` and upsert using `ON CONFLICT`. Staging table is dropped atomically within the same transaction.
+*   **Gold Tables in PostgreSQL**: `olist_customers`, `olist_orders`, `olist_order_payments`, `inr_rates`.

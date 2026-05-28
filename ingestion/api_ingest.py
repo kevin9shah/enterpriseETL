@@ -6,6 +6,7 @@ import sys
 import json
 import pandas as pd
 from storage.parquet_store import silver_parquet_api
+from storage.postgre_store import put_in_postgre
 import logging
 from config.settings import settings 
 
@@ -38,7 +39,13 @@ def main():
 
     # Ensure silver directory exists
     silver_path_api.parent.mkdir(parents=True, exist_ok=True)
-    silver_parquet_api(bronze_path_api, silver_path_api)
+    df_silver = silver_parquet_api(bronze_path_api, silver_path_api)
+    logger.info(f"Data successfully written to silver layer at {silver_path_api}")
+
+    # Gold layer: load into PostgreSQL
+    logger.info("--- Loading inr_rates into PostgreSQL (Gold layer) ---")
+    put_in_postgre(df_silver, "inr_rates")
+    logger.info("--- inr_rates Gold layer load complete ---")
 
 if __name__ == "__main__":
     main()

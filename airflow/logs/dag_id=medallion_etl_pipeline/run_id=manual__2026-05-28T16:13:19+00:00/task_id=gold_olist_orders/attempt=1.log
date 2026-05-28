@@ -1,0 +1,20 @@
+[2026-05-28T21:43:44.315+0530] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-05-28T21:43:44.323+0530] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: medallion_etl_pipeline.gold_olist_orders manual__2026-05-28T16:13:19+00:00 [queued]>
+[2026-05-28T21:43:44.328+0530] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: medallion_etl_pipeline.gold_olist_orders manual__2026-05-28T16:13:19+00:00 [queued]>
+[2026-05-28T21:43:44.328+0530] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2026-05-28T21:43:44.333+0530] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): gold_olist_orders> on 2026-05-28 16:13:19+00:00
+[2026-05-28T21:43:44.347+0530] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'medallion_etl_pipeline', 'gold_olist_orders', 'manual__2026-05-28T16:13:19+00:00', '--job-id', '18', '--raw', '--subdir', 'DAGS_FOLDER/medallion_etl.py', '--cfg-path', '/var/folders/43/z8dt8zx17c11s8ktqc1mq2gm0000gp/T/tmp6ub49bgk']
+[2026-05-28T21:43:44.350+0530] {logging_mixin.py:188} WARNING - /Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=28925) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-05-28T21:43:44.351+0530] {standard_task_runner.py:91} INFO - Job 18: Subtask gold_olist_orders
+[2026-05-28T21:43:44.351+0530] {standard_task_runner.py:63} INFO - Started process 28931 to run task
+[2026-05-28T21:43:44.378+0530] {task_command.py:426} INFO - Running <TaskInstance: medallion_etl_pipeline.gold_olist_orders manual__2026-05-28T16:13:19+00:00 [running]> on host macbook-air-77.local
+[2026-05-28T21:43:44.427+0530] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Kevin Shah' AIRFLOW_CTX_DAG_ID='medallion_etl_pipeline' AIRFLOW_CTX_TASK_ID='gold_olist_orders' AIRFLOW_CTX_EXECUTION_DATE='2026-05-28T16:13:19+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-05-28T16:13:19+00:00'
+[2026-05-28T21:43:44.429+0530] {taskinstance.py:430} INFO - ::endgroup::
+[2026-05-28T21:43:44.440+0530] {csv_ingest.py:142} INFO - --- Starting CSV Gold Loading for olist_orders ---
+[2026-05-28T21:43:49.725+0530] {postgre_store.py:119} INFO - Data successfully upserted into database table: olist_orders
+[2026-05-28T21:43:49.732+0530] {python.py:237} INFO - Done. Returned value was: True
+[2026-05-28T21:43:49.733+0530] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-05-28T21:43:49.739+0530] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=medallion_etl_pipeline, task_id=gold_olist_orders, run_id=manual__2026-05-28T16:13:19+00:00, execution_date=20260528T161319, start_date=20260528T161344, end_date=20260528T161349
+[2026-05-28T21:43:49.770+0530] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2026-05-28T21:43:49.785+0530] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-05-28T21:43:49.785+0530] {local_task_job_runner.py:222} INFO - ::endgroup::

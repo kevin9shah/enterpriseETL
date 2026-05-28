@@ -97,4 +97,56 @@ graph TD
    ```
 3. **Verify the outputs**:
    - The CSV ingestion pipeline will read, clean, and write Olist datasets to Silver Parquet, and upsert them to PostgreSQL.
-   - The Exchange Rate API pipeline will pull exchange rates, save the Bronze JSON, and convert the output to Silver Parquet.
+   - The Exchange Rate API pipeline will pull exchange rates, save the Bronze JSON, convert the output to Silver Parquet, **and load it into the `inr_rates` Gold table in PostgreSQL**.
+
+---
+
+## 4. API Gold Layer — `inr_rates` PostgreSQL Load
+
+### The Problem
+Previously the exchange-rate pipeline stopped at the Silver layer. While `olist_*` tables were being written to PostgreSQL via the staging upsert strategy, `inr_rates` data lived only in `data/silver/api_store/inr_rates.parquet` and was never promoted to the Gold warehouse. This broke the symmetry of the Medallion Architecture for the API source.
+
+### The Solution
+
+#### Step 1 — `postgre_store.py`: Add the `inr_rates` upsert block
+
+Added an `elif table_name == "inr_rates":` branch to `put_in_postgre` with:
+```sql
+CREATE TABLE IF NOT EXISTS inr_rates (
+    currency VARCHAR PRIMARY KEY,
+    rate NUMERIC
+);
+
+INSERT INTO inr_rates (currency, rate)
+SELECT currency, rate
+FROM temp_stage_inr_rates
+ON CONFLICT (currency)
+DO UPDATE SET
+    rate = EXCLUDED.rate;
+```
+*Why*: The `currency` column (e.g. `"USD"`, `"EUR"`) is a natural primary key. On repeat runs the rate simply gets overwritten — exactly what you want for exchange rate data.
+
+#### Step 2 — `api_ingest.py`: Wire Gold layer after Silver write
+
+```python
+from storage.postgre_store import put_in_postgre
+
+# Capture the DataFrame returned by silver_parquet_api
+df_silver = silver_parquet_api(bronze_path_api, silver_path_api)
+
+# Load into PostgreSQL Gold layer
+put_in_postgre(df_silver, "inr_rates")
+```
+*Why*: `silver_parquet_api` already returned the DataFrame; we just needed to capture it and pass it downstream. No changes to `parquet_store.py` were required.
+
+#### Result
+Running `python -m ingestion.api_ingest` now completes the **full Bronze → Silver → Gold** flow for exchange rates. The `inr_rates` table in PostgreSQL is idempotent — re-running the pipeline updates rates in-place without creating duplicates.
+
+```mermaid
+graph LR
+    API["Exchange Rate API"] -->|HTTP GET| Bronze["Bronze: inr_rates.json"]
+    Bronze -->|silver_parquet_api| Silver["Silver: inr_rates.parquet"]
+    Silver -->|put_in_postgre| Staging["temp_stage_inr_rates"]
+    Staging -->|ON CONFLICT currency DO UPDATE| Gold["Gold: inr_rates (PostgreSQL)"]
+    Staging -->|DROP TABLE| Cleanup["Staging Cleaned Up"]
+```

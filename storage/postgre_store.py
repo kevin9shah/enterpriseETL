@@ -102,13 +102,30 @@ def put_in_postgre(df, table_name):
         DO UPDATE SET
             payment_value = EXCLUDED.payment_value;
         """
-        
+    elif table_name == "inr_rates":
+        query = f"""
+        -- Step A: Create target table if it does not exist
+        CREATE TABLE IF NOT EXISTS inr_rates (
+            currency VARCHAR PRIMARY KEY,
+            rate NUMERIC
+        );
+
+        -- Step B: Insert data from staging, updating rate on conflict
+        INSERT INTO inr_rates (currency, rate)
+        SELECT currency, rate
+        FROM {staging_table}
+        ON CONFLICT (currency)
+        DO UPDATE SET
+            rate = EXCLUDED.rate;
+        """
     else:
         # Fallback for tables we didn't explicitly model yet
         with engine.begin() as conn:
             df.to_sql(table_name, conn, if_exists="append", index=False)
         logger.info(f"Appended data to {table_name}")
         return
+
+    
 
     # 3. Execute staging write, SQL query and drop the staging table inside a single transaction
     with engine.begin() as conn:
