@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROJECT_DIR="/Users/kevinshah/Desktop/project"
+PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 export AIRFLOW_HOME="$PROJECT_DIR/airflow"
 VENV_BIN="$PROJECT_DIR/venv/bin"
 export PATH="$VENV_BIN:$PATH"

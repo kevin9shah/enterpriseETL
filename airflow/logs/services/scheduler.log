@@ -205,3 +205,79 @@ export DISABLE_PANDERA_IMPORT_WARNING=True
 [[34m2026-05-28T21:28:17.051+0530[0m] {[34mdagrun.py:[0m851} INFO[0m - Marking run <DagRun medallion_etl_pipeline @ 2026-05-28 15:57:55+00:00: manual__2026-05-28T15:57:55+00:00, state:running, queued_at: 2026-05-28 15:57:55.626749+00:00. externally triggered: True> successful[0m
 [[34m2026-05-28T21:28:17.052+0530[0m] {[34mdagrun.py:[0m902} INFO[0m - DagRun Finished: dag_id=medallion_etl_pipeline, execution_date=2026-05-28 15:57:55+00:00, run_id=manual__2026-05-28T15:57:55+00:00, run_start_date=2026-05-28 15:57:56.349677+00:00, run_end_date=2026-05-28 15:58:17.051949+00:00, run_duration=20.702272, state=success, external_trigger=True, run_type=manual, data_interval_start=2026-05-28 15:57:55+00:00, data_interval_end=2026-05-28 15:57:55+00:00, dag_hash=f0c5aa8064b7d6c2e80cec9b68893b1e[0m
 [[34m2026-05-28T21:28:26.163+0530[0m] {[34mscheduler_job_runner.py:[0m1595} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2026-05-28T21:33:26.190+0530[0m] {[34mscheduler_job_runner.py:[0m1595} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2026-05-28T21:38:27.835+0530[0m] {[34mscheduler_job_runner.py:[0m1595} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2026-05-28T21:39:11.835+0530[0m] {[34mscheduler_job_runner.py:[0m417} INFO[0m - 2 tasks up for execution:
+	<TaskInstance: medallion_etl_pipeline.csv_ingestion manual__2026-05-28T16:09:09+00:00 [scheduled]>
+	<TaskInstance: medallion_etl_pipeline.api_ingestion manual__2026-05-28T16:09:09+00:00 [scheduled]>[0m
+[[34m2026-05-28T21:39:11.836+0530[0m] {[34mscheduler_job_runner.py:[0m480} INFO[0m - DAG medallion_etl_pipeline has 0/16 running and queued tasks[0m
+[[34m2026-05-28T21:39:11.836+0530[0m] {[34mscheduler_job_runner.py:[0m480} INFO[0m - DAG medallion_etl_pipeline has 1/16 running and queued tasks[0m
+[[34m2026-05-28T21:39:11.837+0530[0m] {[34mscheduler_job_runner.py:[0m596} INFO[0m - Setting the following tasks to queued state:
+	<TaskInstance: medallion_etl_pipeline.csv_ingestion manual__2026-05-28T16:09:09+00:00 [scheduled]>
+	<TaskInstance: medallion_etl_pipeline.api_ingestion manual__2026-05-28T16:09:09+00:00 [scheduled]>[0m
+[[34m2026-05-28T21:39:11.838+0530[0m] {[34mscheduler_job_runner.py:[0m639} INFO[0m - Sending TaskInstanceKey(dag_id='medallion_etl_pipeline', task_id='csv_ingestion', run_id='manual__2026-05-28T16:09:09+00:00', try_number=1, map_index=-1) to executor with priority 2 and queue default[0m
+[[34m2026-05-28T21:39:11.838+0530[0m] {[34mbase_executor.py:[0m149} INFO[0m - Adding to queue: ['airflow', 'tasks', 'run', 'medallion_etl_pipeline', 'csv_ingestion', 'manual__2026-05-28T16:09:09+00:00', '--local', '--subdir', 'DAGS_FOLDER/medallion_etl.py'][0m
+[[34m2026-05-28T21:39:11.839+0530[0m] {[34mscheduler_job_runner.py:[0m639} INFO[0m - Sending TaskInstanceKey(dag_id='medallion_etl_pipeline', task_id='api_ingestion', run_id='manual__2026-05-28T16:09:09+00:00', try_number=1, map_index=-1) to executor with priority 2 and queue default[0m
+[[34m2026-05-28T21:39:11.839+0530[0m] {[34mbase_executor.py:[0m149} INFO[0m - Adding to queue: ['airflow', 'tasks', 'run', 'medallion_etl_pipeline', 'api_ingestion', 'manual__2026-05-28T16:09:09+00:00', '--local', '--subdir', 'DAGS_FOLDER/medallion_etl.py'][0m
+[[34m2026-05-28T21:39:11.840+0530[0m] {[34msequential_executor.py:[0m74} INFO[0m - Executing command: ['airflow', 'tasks', 'run', 'medallion_etl_pipeline', 'csv_ingestion', 'manual__2026-05-28T16:09:09+00:00', '--local', '--subdir', 'DAGS_FOLDER/medallion_etl.py'][0m
+[[34m2026-05-28T21:39:12.490+0530[0m] {[34mdagbag.py:[0m545} INFO[0m - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py[0m
+/Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+
+[[34m2026-05-28T21:39:13.197+0530[0m] {[34mtask_command.py:[0m426} INFO[0m - Running <TaskInstance: medallion_etl_pipeline.csv_ingestion manual__2026-05-28T16:09:09+00:00 [queued]> on host macbook-air-77.local[0m
+[[34m2026-05-28T21:39:26.251+0530[0m] {[34msequential_executor.py:[0m74} INFO[0m - Executing command: ['airflow', 'tasks', 'run', 'medallion_etl_pipeline', 'api_ingestion', 'manual__2026-05-28T16:09:09+00:00', '--local', '--subdir', 'DAGS_FOLDER/medallion_etl.py'][0m
+[[34m2026-05-28T21:39:27.167+0530[0m] {[34mdagbag.py:[0m545} INFO[0m - Filling up the DagBag from /Users/kevinshah/Desktop/project/airflow/dags/medallion_etl.py[0m
+/Users/kevinshah/Desktop/project/venv/lib/python3.12/site-packages/pandera/_pandas_deprecated.py:143 FutureWarning: Importing pandas-specific classes and functions from the
+top-level pandera module will be **removed in a future version of pandera**.
+If you're using pandera to validate pandas objects, we highly recommend updating
+your import:
+
+```
+# old import
+import pandera as pa
+
+# new import
+import pandera.pandas as pa
+```
+
+If you're using pandera to validate objects from other compatible libraries
+like pyspark or polars, see the supported libraries section of the documentation
+for more information on how to import pandera:
+
+https://pandera.readthedocs.io/en/stable/supported_libraries.html
+
+To disable this warning, set the environment variable:
+
+```
+export DISABLE_PANDERA_IMPORT_WARNING=True
+```
+
+[[34m2026-05-28T21:39:27.873+0530[0m] {[34mtask_command.py:[0m426} INFO[0m - Running <TaskInstance: medallion_etl_pipeline.api_ingestion manual__2026-05-28T16:09:09+00:00 [queued]> on host macbook-air-77.local[0m
+[[34m2026-05-28T21:39:31.165+0530[0m] {[34mscheduler_job_runner.py:[0m689} INFO[0m - Received executor event with state success for task instance TaskInstanceKey(dag_id='medallion_etl_pipeline', task_id='csv_ingestion', run_id='manual__2026-05-28T16:09:09+00:00', try_number=1, map_index=-1)[0m
+[[34m2026-05-28T21:39:31.165+0530[0m] {[34mscheduler_job_runner.py:[0m689} INFO[0m - Received executor event with state success for task instance TaskInstanceKey(dag_id='medallion_etl_pipeline', task_id='api_ingestion', run_id='manual__2026-05-28T16:09:09+00:00', try_number=1, map_index=-1)[0m
+[[34m2026-05-28T21:39:31.170+0530[0m] {[34mscheduler_job_runner.py:[0m721} INFO[0m - TaskInstance Finished: dag_id=medallion_etl_pipeline, task_id=api_ingestion, run_id=manual__2026-05-28T16:09:09+00:00, map_index=-1, run_start_date=2026-05-28 16:09:27.934872+00:00, run_end_date=2026-05-28 16:09:30.896940+00:00, run_duration=2.962068, state=success, executor_state=success, try_number=1, max_tries=3, job_id=9, pool=default_pool, queue=default, priority_weight=2, operator=PythonOperator, queued_dttm=2026-05-28 16:09:11.837413+00:00, queued_by_job_id=2, pid=28539[0m
+[[34m2026-05-28T21:39:31.170+0530[0m] {[34mscheduler_job_runner.py:[0m721} INFO[0m - TaskInstance Finished: dag_id=medallion_etl_pipeline, task_id=csv_ingestion, run_id=manual__2026-05-28T16:09:09+00:00, map_index=-1, run_start_date=2026-05-28 16:09:13.270634+00:00, run_end_date=2026-05-28 16:09:25.945487+00:00, run_duration=12.674853, state=success, executor_state=success, try_number=1, max_tries=1, job_id=8, pool=default_pool, queue=default, priority_weight=2, operator=PythonOperator, queued_dttm=2026-05-28 16:09:11.837413+00:00, queued_by_job_id=2, pid=28517[0m
+[[34m2026-05-28T21:39:33.593+0530[0m] {[34mdagrun.py:[0m851} INFO[0m - Marking run <DagRun medallion_etl_pipeline @ 2026-05-28 16:09:09+00:00: manual__2026-05-28T16:09:09+00:00, state:running, queued_at: 2026-05-28 16:09:09.157852+00:00. externally triggered: True> successful[0m
+[[34m2026-05-28T21:39:33.595+0530[0m] {[34mdagrun.py:[0m902} INFO[0m - DagRun Finished: dag_id=medallion_etl_pipeline, execution_date=2026-05-28 16:09:09+00:00, run_id=manual__2026-05-28T16:09:09+00:00, run_start_date=2026-05-28 16:09:10.769946+00:00, run_end_date=2026-05-28 16:09:33.595047+00:00, run_duration=22.825101, state=success, external_trigger=True, run_type=manual, data_interval_start=2026-05-28 16:09:09+00:00, data_interval_end=2026-05-28 16:09:09+00:00, dag_hash=f0c5aa8064b7d6c2e80cec9b68893b1e[0m

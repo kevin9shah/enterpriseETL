@@ -1,4 +1,3 @@
-import psycopg2
 from sqlalchemy import create_engine, text
 from dotenv import load_dotenv
 import os
@@ -13,13 +12,7 @@ logger = logging.getLogger(__name__)
 
 def get_connection():
     try:
-        return psycopg2.connect(
-            database=settings.db_name,
-            user = settings.db_user,
-            password= settings.db_pass,
-            host = settings.db_host,
-            port = settings.db_port,
-        )
+        return engine.connect()
     except Exception as e:
         logger.error(f"Connection error: {e}")
         return False
@@ -33,9 +26,8 @@ def connect():
         logger.error("Failed to connect to database")
 
 def put_in_postgre(df, table_name):
-    # 1. Write the DataFrame to a temporary staging table
+    # Define temporary staging table name
     staging_table = f"temp_stage_{table_name}"
-    df.to_sql(staging_table, engine, if_exists="replace", index=False)
     
     # 2. Use simple if/else blocks to execute explicit SQL queries for each table
     query = ""
@@ -113,12 +105,14 @@ def put_in_postgre(df, table_name):
         
     else:
         # Fallback for tables we didn't explicitly model yet
-        df.to_sql(table_name, engine, if_exists="append", index=False)
+        with engine.begin() as conn:
+            df.to_sql(table_name, conn, if_exists="append", index=False)
         logger.info(f"Appended data to {table_name}")
         return
 
-    # 3. Execute SQL query and drop the staging table
+    # 3. Execute staging write, SQL query and drop the staging table inside a single transaction
     with engine.begin() as conn:
+        df.to_sql(staging_table, conn, if_exists="replace", index=False)
         conn.execute(text(query))
         conn.execute(text(f"DROP TABLE IF EXISTS {staging_table};"))
         
