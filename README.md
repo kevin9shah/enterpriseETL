@@ -163,6 +163,28 @@ graph TD
 
 ---
 
+## 📊 Live Interactive BI Analytics Dashboard
+
+The project includes a built-in, local **BI Analytics Dashboard** web application to monitor PostgreSQL Gold table statistics, view currency trends, and track logging outputs.
+
+![Enterprise Medallion Analytics Dashboard](dashboard/dashboard_mockup.png)
+
+### Key Dashboard Features:
+1. **Dynamic Statistics Cards:** Tailored metrics querying `olist_orders`, `olist_customers`, and `olist_order_payments` from the local PostgreSQL warehouse.
+2. **Interactive Visualizations (Chart.js):**
+   * *USD/INR Exchange Rates:* Line chart displaying filtered conversion rates relative to INR (USD, EUR, GBP, JPY, CAD, INR).
+   * *Sales by Customer State:* Horizontal bar chart displaying the top 5 generating states.
+3. **Live Logs Monitor:** Dynamically streams the last 5 log events from `logs/pipeline.log`.
+4. **ETL Pipeline Trigger Control:** Clicking the **Trigger Pipeline** action button triggers the pipeline execution script asynchronously in the background.
+
+To start the dashboard, run:
+```bash
+python3 dashboard_server.py
+```
+Open **[http://localhost:5050](http://localhost:5050)** in your browser.
+
+---
+
 ## 📁 Project Directory Structure
 
 ```text
@@ -248,9 +270,17 @@ DB_PORT=5432
 
 ## 🏃 Run the Pipeline
 
-There are three ways to run this project:
+There are four ways to run and interact with this project:
 
-### Option A: Direct CLI Execution (Manual Run)
+### Option A: Interactive BI Dashboard (Best Visual Presentation)
+To launch the real-time business intelligence dashboard web application:
+```bash
+source venv/bin/activate
+python3 dashboard_server.py
+```
+Open **[http://localhost:5050](http://localhost:5050)** in your web browser.
+
+### Option B: Direct CLI Execution (Manual Run)
 To trigger a manual run of the entire ingestion and loading process using Python scripts:
 ```bash
 source venv/bin/activate
@@ -258,7 +288,7 @@ python3 main.py
 ```
 Check the execution logs at [logs/pipeline.log](file:///Users/kevinshah/Desktop/project/logs/pipeline.log).
 
-### Option B: Apache Airflow (Orchestrated Run)
+### Option C: Apache Airflow (Orchestrated Run)
 1. **Start Airflow Webserver and Scheduler**:
    ```bash
    ./start_airflow.sh start
@@ -277,7 +307,7 @@ Check the execution logs at [logs/pipeline.log](file:///Users/kevinshah/Desktop/
      ```
    * Check status at any time: `./start_airflow.sh status`
 
-### Option C: Run Unit Tests
+### Option D: Run Unit Tests
 To verify the cleaning functions and validation structures:
 ```bash
 source venv/bin/activate

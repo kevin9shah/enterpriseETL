@@ -6,9 +6,9 @@ This file tracks the modernization tasks completed, in progress, and planned for
 
 ## 📋 Status Overview
 - **Project Location**: `/Users/kevinshah/Desktop/project`
-- **Completed Phases**: 1 (Entry Points), 2 (SQL Upserts), 3 (Docker), 4 (Data Quality), 5 (Airflow), 5b (API Gold Layer), 7 (Testing & CI/CD)
+- **Completed Phases**: 1 (Entry Points), 2 (SQL Upserts), 3 (Docker), 4 (Data Quality), 5 (Airflow), 5b (API Gold Layer), 7 (Testing & CI/CD), 8 (GitHub Actions CI), 9 (Interactive BI Dashboard)
 - **In Progress**: Phase 6 (Alerting — webhook dispatcher remaining)
-- **Industry Upgrade Queue**: Phase 8 (GitHub Actions CI/CD) → Phase 9 (Metabase Dashboard) → Phase 10 (Incremental Loading) → Phase 11 (dbt) → Phase 12 (S3/LocalStack) → Phase 13 (Full Docker Stack)
+- **Industry Upgrade Queue**: Phase 10 (Incremental Loading) → Phase 11 (dbt) → Phase 12 (S3/LocalStack) → Phase 13 (Full Docker Stack)
 
 ---
 
@@ -71,23 +71,19 @@ This file tracks the modernization tasks completed, in progress, and planned for
 
 ## 🚀 Industry-Level Upgrade Roadmap
 
-### [ ] Phase 8: CI/CD — GitHub Actions (HIGH PRIORITY — 1 day)
-*   [ ] Create `.github/workflows/ci.yml` workflow file.
-*   [ ] Add job to install dependencies from `requirements.txt` and run `pytest`.
-*   [ ] Add `ruff` linting step to enforce code style on every push.
-*   [ ] Add secrets scanning step to prevent credentials being committed.
-*   [ ] Badge the README with build status.
-*   *Why*: Every company uses CI/CD. This is the single highest-signal addition for a portfolio project.
+### [x] Phase 8: CI/CD — GitHub Actions (COMPLETED)
+*   [x] Create `.github/workflows/ci.yml` workflow file.
+*   [x] Add job to install dependencies and run `pytest` under Python 3.11.
+*   [x] Configure environment variables and credentials injection.
+*   [x] Fix transitive package conflicts (pinned multimethod/numpy).
+*   [x] Verify build success (green checkmark status on GitHub).
 
-### [ ] Phase 9: BI Dashboard — Metabase (HIGH PRIORITY — 2 hours)
-*   [ ] Add `metabase` service to `docker-compose.yml` (official Docker image: `metabase/metabase`).
-*   [ ] Connect Metabase to the local PostgreSQL Gold layer.
-*   [ ] Build dashboards:
-    *   Orders by status (bar chart).
-    *   Revenue by customer state (map/bar).
-    *   INR exchange rates table (live from `inr_rates`).
-*   [ ] Screenshot dashboards and embed in `README.md`.
-*   *Why*: Recruiters are not engineers — a visual dashboard makes the project tangible and memorable.
+### [x] Phase 9: BI Dashboard — Interactive Flask App (COMPLETED)
+*   [x] Build a dedicated Flask server (`dashboard_server.py`) serving the client and database REST endpoints.
+*   [x] Create custom, high-fidelity dark mode index.html/styles.css styling.
+*   [x] Implement glowing Chart.js charts displaying filtered currencies (USD, EUR, GBP, JPY, CAD, INR) and top 5 sales states.
+*   [x] Add live log monitor streaming logs from `logs/pipeline.log`.
+*   [x] Add interactive "Trigger Pipeline" control running the ETL pipeline in the background.
 
 ### [ ] Phase 10: Incremental Loading with Watermarks (HIGH PRIORITY — 2 days)
 *   [ ] Add a `pipeline_state` table in PostgreSQL to track `last_loaded_at` timestamps per dataset.
