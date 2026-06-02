@@ -54,8 +54,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     console.warn("Chart.js is not loaded. Skipping chart rendering.");
                     return;
                 }
-                const labels = Object.keys(data);
-                const values = Object.values(data);
+                const targetCurrencies = ["USD", "EUR", "GBP", "JPY", "CAD", "INR"];
+                const filteredData = {};
+                targetCurrencies.forEach(curr => {
+                    if (data[curr] !== undefined) {
+                        filteredData[curr] = data[curr];
+                    }
+                });
+
+                const labels = Object.keys(filteredData);
+                const values = Object.values(filteredData);
 
                 const ctx = document.getElementById("rates-chart").getContext("2d");
                 
