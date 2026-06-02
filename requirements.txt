@@ -14,6 +14,6 @@ urllib3==2.7.0
 pandera==0.18.0
 pytest==8.0.0
 pytest-mock==3.14.0
-ruff==0.11.13
+ruff==0.15.15
 pydantic-settings
 apache-airflow==2.9.1

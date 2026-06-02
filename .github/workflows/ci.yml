@@ -42,7 +42,7 @@ jobs:
             pydantic-settings \
             pytest \
             pytest-mock \
-            ruff
+            ruff==0.15.15
 
       - name: Ruff lint
         run: ruff check .
