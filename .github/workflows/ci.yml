@@ -45,7 +45,11 @@ jobs:
             ruff==0.15.15
 
       - name: Ruff lint
-        run: ruff check .
+        run: |
+          echo "ruff version: $(ruff --version)"
+          echo "config check:"
+          cat ruff.toml
+          ruff check . --config ruff.toml
 
       - name: Run pytest
         run: pytest test/ -v --tb=short
