@@ -9,6 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let ratesChart = null;
     let salesChart = null;
 
+    // Check for local file browsing
+    if (window.location.protocol === "file:") {
+        const banner = document.getElementById("file-warning-banner");
+        if (banner) banner.style.display = "flex";
+    }
+
     // Fetch and populate stats
     function loadStats() {
         fetch(API_STATS)
@@ -44,6 +50,10 @@ document.addEventListener("DOMContentLoaded", () => {
         fetch(API_RATES)
             .then(res => res.json())
             .then(data => {
+                if (typeof Chart === 'undefined') {
+                    console.warn("Chart.js is not loaded. Skipping chart rendering.");
+                    return;
+                }
                 const labels = Object.keys(data);
                 const values = Object.values(data);
 
@@ -106,6 +116,10 @@ document.addEventListener("DOMContentLoaded", () => {
         fetch(API_SALES)
             .then(res => res.json())
             .then(data => {
+                if (typeof Chart === 'undefined') {
+                    console.warn("Chart.js is not loaded. Skipping chart rendering.");
+                    return;
+                }
                 const labels = data.map(item => item.state);
                 const salesValues = data.map(item => item.sales);
                 const tooltipCities = data.map(item => item.city);

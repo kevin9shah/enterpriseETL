@@ -365,3 +365,27 @@ body {
         box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
     }
 }
+
+.warning-banner {
+    background-color: var(--red);
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.warning-banner a {
+    color: white;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
