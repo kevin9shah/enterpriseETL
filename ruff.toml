@@ -3,6 +3,7 @@ select = ["E", "W", "F", "I"]
 ignore = [
     "E501",   # line too long — SQL strings & long identifiers are intentional
     "E402",   # module-level import not at top — project uses sys.path.insert for local packages
+    "I001",   # import sorting — airflow DAG files have intentional path manipulation before imports
 ]
 
 exclude = [

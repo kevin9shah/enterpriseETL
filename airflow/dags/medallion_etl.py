@@ -1,6 +1,6 @@
 import sys
-from pathlib import Path
 from datetime import datetime, timedelta
+from pathlib import Path
 
 # Add project root to path for imports
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -10,10 +10,10 @@ if str(PROJECT_ROOT) not in sys.path:
 from airflow import DAG
 from airflow.operators.empty import EmptyOperator
 from airflow.operators.python import PythonOperator
+from ingestion.api_ingest import main as run_api_pipeline
 
 # Import granular ingestion functions
-from ingestion.csv_ingest import ingest_bronze, ingest_silver, ingest_gold
-from ingestion.api_ingest import main as run_api_pipeline
+from ingestion.csv_ingest import ingest_bronze, ingest_gold, ingest_silver
 
 default_args = {
     'owner': 'Kevin Shah',
