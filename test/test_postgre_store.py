@@ -8,10 +8,10 @@ is required.  The tests verify:
   3. The staging table is dropped at the end of the transaction
   4. The operation runs inside a single transaction (engine.begin() used once)
 """
-import pytest
-import pandas as pd
-from unittest.mock import MagicMock, patch, call
+from unittest.mock import MagicMock, patch
 
+import pandas as pd
+import pytest
 
 # ---------------------------------------------------------------------------
 # Helpers

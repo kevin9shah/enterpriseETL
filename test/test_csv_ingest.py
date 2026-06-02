@@ -1,6 +1,7 @@
-import pytest
 import pandas as pd
+
 from ingestion.csv_ingest import clean_customers, clean_orders, clean_payments
+
 
 def test_clean_customers():
     # Arrange: Create a mock input DataFrame with duplicate, mixed-case states, and messy cities
@@ -12,10 +13,10 @@ def test_clean_customers():
         "customer_state": ["sp", "sp", "sp"]
     }
     df = pd.DataFrame(raw_data)
-    
+
     # Act: Run clean customers transformation
     cleaned_df = clean_customers(df)
-    
+
     # Assert:
     # 1. Row count should be 2 (duplicates removed)
     assert len(cleaned_df) == 2
@@ -40,10 +41,10 @@ def test_clean_orders():
         "order_estimated_delivery_date": ["2017-10-18 00:00:00"]
     }
     df = pd.DataFrame(raw_data)
-    
+
     # Act
     cleaned_df = clean_orders(df)
-    
+
     # Assert
     # 1. order_date column is created and matches purchase date
     assert "order_date" in cleaned_df.columns
@@ -59,10 +60,10 @@ def test_clean_payments():
         "payment_value": [50.0, 25.5, 100.0]
     }
     df = pd.DataFrame(raw_data)
-    
+
     # Act
     cleaned_df = clean_payments(df)
-    
+
     # Assert
     # 1. Dataset must be aggregated by order_id
     assert len(cleaned_df) == 2

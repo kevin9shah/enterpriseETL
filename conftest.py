@@ -3,10 +3,9 @@ Root conftest.py
 Patches config.settings.settings before any module that imports it is loaded,
 so that tests don't require a live .env or real database.
 """
-import sys
 import os
+import sys
 from pathlib import Path
-from unittest.mock import MagicMock, patch
 
 # Ensure the project root is on the path for all tests
 PROJECT_ROOT = Path(__file__).resolve().parent

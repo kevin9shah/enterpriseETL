@@ -1,5 +1,5 @@
-import pandera as pa
 import pandas as pd
+import pandera as pa
 
 # 1. Customer Schema Rules
 customer_schema = pa.DataFrameSchema(
