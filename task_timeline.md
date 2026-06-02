@@ -6,8 +6,8 @@ This file tracks the modernization tasks completed, in progress, and planned for
 
 ## 📋 Status Overview
 - **Project Location**: `/Users/kevinshah/Desktop/project`
-- **Completed Phases**: 1 (Entry Points), 2 (SQL Upserts), 3 (Docker), 4 (Data Quality), 5 (Airflow), 5b (API Gold Layer)
-- **In Progress**: Phase 6 (Alerting), Phase 7 (CI/CD + Tests)
+- **Completed Phases**: 1 (Entry Points), 2 (SQL Upserts), 3 (Docker), 4 (Data Quality), 5 (Airflow), 5b (API Gold Layer), 7 (Testing & CI/CD)
+- **In Progress**: Phase 6 (Alerting — webhook dispatcher remaining)
 - **Industry Upgrade Queue**: Phase 8 (GitHub Actions CI/CD) → Phase 9 (Metabase Dashboard) → Phase 10 (Incremental Loading) → Phase 11 (dbt) → Phase 12 (S3/LocalStack) → Phase 13 (Full Docker Stack)
 
 ---
@@ -60,10 +60,12 @@ This file tracks the modernization tasks completed, in progress, and planned for
 *   [x] Centralize configuration variables in a unified settings module using `pydantic-settings`.
 *   [ ] Add an alert dispatcher to ping webhooks (e.g. Slack/Discord) upon task failures via Airflow `on_failure_callback`.
 
-### [/] Phase 7: Testing & CI/CD Pipeline (IN PROGRESS)
+### [x] Phase 7: Testing & CI/CD Pipeline (COMPLETED — 2026-06-02)
 *   [x] Write unit tests for cleaning functions in [ingestion/csv_ingest.py](file:///Users/kevinshah/Desktop/project/ingestion/csv_ingest.py) using `pytest`.
-*   [ ] Set up database mocks or transaction rollbacks for testing database load operations.
-*   [ ] Create a GitHub Actions workflow (`.github/workflows/ci.yml`) to run `pytest` and `ruff` linter automatically on every commit.
+*   [x] Set up database mocks for testing load operations — [test/test_postgre_store.py](file:///Users/kevinshah/Desktop/project/test/test_postgre_store.py) patches the SQLAlchemy engine with `unittest.mock`; 11 tests cover all 4 tables (upsert SQL, staging write, DROP cleanup, atomicity, fallback).
+*   [x] Create GitHub Actions workflow [`.github/workflows/ci.yml`](file:///Users/kevinshah/Desktop/project/.github/workflows/ci.yml) — two-job pipeline: Ruff lint (via `astral-sh/ruff-action`) then `pytest` on Python 3.11 with env var injection.
+*   [x] Added `conftest.py` (root) and `pytest.ini` for clean test discovery and env-var isolation.
+*   [x] Added `pytest-mock` and `ruff` to `requirements.txt`.
 
 ---
 
