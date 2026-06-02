@@ -1,34 +1,33 @@
-import requests
-import os
-from dotenv import load_dotenv
-from pathlib import Path
-import sys
 import json
-import pandas as pd
-from storage.parquet_store import silver_parquet_api
-from storage.postgre_store import put_in_postgre
 import logging
-from config.settings import settings 
+import sys
+from pathlib import Path
+
+import requests
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(str(BASE_DIR))
 
+from config.settings import settings  # noqa: E402
+from storage.parquet_store import silver_parquet_api  # noqa: E402
+from storage.postgre_store import put_in_postgre  # noqa: E402
+
 logger = logging.getLogger(__name__)
 
 def main():
-    
+
 
     bronze_path_api = BASE_DIR / "data/bronze/api_store/inr_rates.json"
     silver_path_api = BASE_DIR / "data/silver/api_store/inr_rates.parquet"
     API = settings.exchange_rate_api_key
     url = f"https://v6.exchangerate-api.com/v6/{API}/latest/INR"
-    
+
     logger.info("--- Starting API ingestion for Exchange Rates ---")
     response = requests.get(url)
     if response.status_code != 200:
         logger.error(f"Failed to fetch data from API: Status code {response.status_code}")
         return
-        
+
     data = response.json()
 
     # Ensure bronze directory exists
