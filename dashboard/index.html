@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Medallion Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <div class="logo-icon"><i class="fa-solid fa-wind"></i></div>
+                <h2>Enterprise Medallion</h2>
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="active"><i class="fa-solid fa-chart-line"></i> Overview</a>
+                <a href="#" onclick="alert('Airflow integration status: Active. Check Localhost:8080 when running.')"><i class="fa-solid fa-diagram-project"></i> Pipelines</a>
+                <a href="#" onclick="alert('Data Lake parquet folder: data/silver/')"><i class="fa-solid fa-database"></i> Data Lake</a>
+                <a href="#" onclick="window.location.reload()"><i class="fa-solid fa-rotate"></i> Refresh Data</a>
+            </nav>
+            <div class="user-profile">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Avatar">
+                <div class="profile-info">
+                    <h4>Kevin Shah</h4>
+                    <span>Data Architect</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-title">
+                    <h1>Overview</h1>
+                    <p>Live stats and pipeline logs from the database warehouse</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary" id="run-pipeline-btn"><i class="fa-solid fa-play"></i> Trigger Pipeline</button>
+                </div>
+            </header>
+
+            <!-- Cards Grid -->
+            <section class="metrics-grid">
+                <div class="metric-card">
+                    <div class="card-icon blue"><i class="fa-solid fa-box-open"></i></div>
+                    <div class="card-details">
+                        <span class="card-title">Total Ingested Orders</span>
+                        <h3 id="stat-orders">--</h3>
+                        <span class="card-growth"><i class="fa-solid fa-arrow-trend-up"></i> +12.8% vs last month</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="card-icon violet"><i class="fa-solid fa-users"></i></div>
+                    <div class="card-details">
+                        <span class="card-title">Total Customers</span>
+                        <h3 id="stat-customers">--</h3>
+                        <span class="card-sub">Bronze & Gold Synced</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="card-icon teal"><i class="fa-solid fa-wallet"></i></div>
+                    <div class="card-details">
+                        <span class="card-title">Total Revenue</span>
+                        <h3 id="stat-revenue">--</h3>
+                        <span class="card-sub">Aggregated payments</span>
+                    </div>
+                </div>
+                <div class="metric-card" id="status-card">
+                    <div class="card-icon green" id="status-icon"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="card-details">
+                        <span class="card-title">Pipeline Status</span>
+                        <h3 id="stat-health">Healthy</h3>
+                        <span class="card-sub">Airflow & CI/CD Active</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts & Logs Section -->
+            <section class="charts-layout">
+                <!-- Exchange Rate Chart -->
+                <div class="chart-container exchange-rates">
+                    <div class="chart-header">
+                        <h3>USD to Selected Currency Rates</h3>
+                        <span>Conversion Rate API values</span>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="rates-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- State Sales & Logs -->
+                <div class="side-panel">
+                    <!-- Sales Card -->
+                    <div class="chart-container state-sales">
+                        <div class="chart-header">
+                            <h3>Sales by State (Top 5)</h3>
+                            <span>PostgreSQL gold aggregate</span>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="sales-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Logs Monitor -->
+                    <div class="logs-monitor">
+                        <div class="logs-header">
+                            <h3>Pipeline Logs (Last 5 Events)</h3>
+                            <span class="pulse-indicator"></span>
+                        </div>
+                        <div class="logs-list" id="logs-container">
+                            <!-- Logs will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
